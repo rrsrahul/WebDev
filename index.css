@@ -1,0 +1,27 @@
+body {
+    background-color: burlywood;
+    
+}
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    color: aqua;
+
+}
+.container
+{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 100px;
+    /*background-color: aqua;*/
+}
+
+.first{
+   background-color: red;
+} 
+.second
+{
+   background-color: royalblue;
+}
