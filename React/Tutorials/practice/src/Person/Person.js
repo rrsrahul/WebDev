@@ -1,9 +1,16 @@
 import React from 'react';
 
-const person = ()=>
+const person = (props)=>
 {
     return (
-    <h1>Functional React Programming</h1>
+    <div>
+        <h1>Functional React Programming</h1>
+        <p>
+            Hi my name is {props.name} and my age is {props.age} 
+        </p>
+        
+        </div>
+    
     );
 }
 
