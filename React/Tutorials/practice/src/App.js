@@ -1,10 +1,41 @@
 import React, { Component } from 'react';
-import Person from './Person/Person';
+//import Person from './Person/Person';
+import UserInput from './UserInput/UserInput'
 
 import './App.css';
+import UserOutput from './UserOutput/UserOutput';
 
 
 
+class App extends Component
+{
+
+  state={
+    userName:'None'
+  }
+ onNameChange  = (event)=>
+  {
+    this.setState(
+      {
+        userName:event.target.value
+      }
+    )
+  }
+
+
+  render()
+  { 
+   return ( <div className='App'>
+          <UserInput change={this.onNameChange.bind(this)} username={this.state.userName}/>
+        <UserOutput username={this.state.userName}/>
+    </div>
+   )
+  }
+}
+
+
+
+/*
 class App extends Component
 {
 
@@ -63,7 +94,7 @@ class App extends Component
   }
 
 }
-
+*/
 /*
 React Hooks Syntax 
 const App = props =>
