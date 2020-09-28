@@ -1,11 +1,88 @@
 import React, { Component } from 'react';
-//import Person from './Person/Person';
-import UserInput from './UserInput/UserInput'
+import Person from './Person/Person';
+//import UserInput from './UserInput/UserInput'
 
 import './App.css';
-import UserOutput from './UserOutput/UserOutput';
+//import UserOutput from './UserOutput/UserOutput';
 
 
+
+
+class App extends Component
+{
+
+  state={
+    persons:[
+      {name:'Rahul',age:10},
+      {name:'Rrs',age:12},
+      {name:'Heisen',age:22}
+    ],
+    showPersons:false
+  }
+  switchNameHandler = (newName)=>
+  {
+      this.setState({
+        persons:[
+          {name:'Rahul',age:10},
+          {name:'Rrs',age:12},
+          {name:newName,age:22}
+        ]
+      });
+      //Setstate merges the arguement passed with the State, and does not discard other state values
+  }
+  nameChangedHandler = (event)=>
+  {
+    this.setState({
+      persons:[
+        {name:'Rahul',age:10},
+        {name:event.target.value,age:12},
+        {name:'Heisen',age:22}
+      ],
+      
+    });
+  }
+  togglePersonsHandler = ()=>
+  {
+      const doesShow = this.setState.showPersons;
+      this.setState({showPersons:!doesShow});
+  }
+  render()
+  {
+    return (
+      <div className="App">
+         <h1>Functional React Programming</h1>
+        <h1>Hi First React App</h1>
+        <button onClick={this.togglePersonsHandler} >Switch</button>
+
+      { 
+        this.state.showPersons ? 
+          <div>
+                  <Person 
+                  name={this.state.persons[0].name} 
+                  age={this.state.persons[0].age}/>
+                  <Person 
+                  name={this.state.persons[1].name} 
+                  age={this.state.persons[1].age}
+                  changed={this.nameChangedHandler}
+                  click ={this.switchNameHandler.bind(this,'Heisenbergs')} />
+                  <Person 
+                  name={this.state.persons[2].name} 
+                  age={this.state.persons[2].age}/>
+
+            </div>: null
+      }
+       
+       
+      </div>
+    );
+
+
+  }
+
+}
+
+
+/*
 
 class App extends Component
 {
@@ -31,68 +108,6 @@ class App extends Component
     </div>
    )
   }
-}
-
-
-
-/*
-class App extends Component
-{
-
-  state={
-    persons:[
-      {name:'Rahul',age:10},
-      {name:'Rrs',age:12},
-      {name:'Heisen',age:22}
-    ]
-  }
-  switchNameHandler = (newName)=>
-  {
-      this.setState({
-        persons:[
-          {name:'Rahul',age:10},
-          {name:'Rrs',age:12},
-          {name:newName,age:22}
-        ]
-      });
-      //Setstate merges the arguement passed with the State, and does not discard other state values
-  }
-  nameChangedHandler = (event)=>
-  {
-    this.setState({
-      persons:[
-        {name:'Rahul',age:10},
-        {name:event.target.value,age:12},
-        {name:'Heisen',age:22}
-      ]
-    });
-  }
-
-  render()
-  {
-    return (
-      <div className="App">
-         <h1>Functional React Programming</h1>
-        <h1>Hi First React App</h1>
-        <button onClick={() => this.switchNameHandler('HeisenbergswithArrowF')} >Switch</button>
-        <Person 
-        name={this.state.persons[0].name} 
-        age={this.state.persons[0].age}/>
-        <Person 
-        name={this.state.persons[1].name} 
-        age={this.state.persons[1].age}
-        changed={this.nameChangedHandler}
-        click ={this.switchNameHandler.bind(this,'Heisenbergs')} />
-        <Person 
-        name={this.state.persons[2].name} 
-        age={this.state.persons[2].age}/>
-       
-      </div>
-    );
-
-
-  }
-
 }
 */
 /*
