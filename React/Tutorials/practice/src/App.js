@@ -43,36 +43,40 @@ class App extends Component
   }
   togglePersonsHandler = ()=>
   {
-      const doesShow = this.setState.showPersons;
+      let doesShow = this.state.showPersons;
       this.setState({showPersons:!doesShow});
   }
   render()
   {
+
+    let persons = null;
+
+    if(this.state.showPersons)
+    {
+      persons= (
+        <div>
+        <Person 
+        name={this.state.persons[0].name} 
+        age={this.state.persons[0].age}/>
+        <Person 
+        name={this.state.persons[1].name} 
+        age={this.state.persons[1].age}
+        changed={this.nameChangedHandler}
+        click ={this.switchNameHandler.bind(this,'Heisenbergs')} />
+        <Person 
+        name={this.state.persons[2].name} 
+        age={this.state.persons[2].age}/>
+
+      </div>
+      );
+    }
+
     return (
       <div className="App">
          <h1>Functional React Programming</h1>
         <h1>Hi First React App</h1>
         <button onClick={this.togglePersonsHandler} >Switch</button>
-
-      { 
-        this.state.showPersons ? 
-          <div>
-                  <Person 
-                  name={this.state.persons[0].name} 
-                  age={this.state.persons[0].age}/>
-                  <Person 
-                  name={this.state.persons[1].name} 
-                  age={this.state.persons[1].age}
-                  changed={this.nameChangedHandler}
-                  click ={this.switchNameHandler.bind(this,'Heisenbergs')} />
-                  <Person 
-                  name={this.state.persons[2].name} 
-                  age={this.state.persons[2].age}/>
-
-            </div>: null
-      }
-       
-       
+          {persons}
       </div>
     );
 
