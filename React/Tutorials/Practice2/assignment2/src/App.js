@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+import './App.css';
+import CharComp from './CharComp/CharComp';
+import ValidationComp from './ValidationComp/ValidationComp';
+
+class App extends Component
+{
+  state={
+    userInput:"",
+    userInputChars:[]
+
+  }
+
+  userNameHandler = (event)=>
+  {
+    const chars = event.target.value.split();
+    this.setState({userInput:event.target.value,userInputChars:chars});
+  }
+
+  render()
+  {
+    return (
+      <div>
+        <input type="text" onChange = {this.userNameHandler}/>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {this.state.userInput}
+          <ValidationComp length={this.state.userInput.length}/>
+          <CharComp data ="2"/>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      </div>
+    )
+  }
+
 }
 
 export default App;
