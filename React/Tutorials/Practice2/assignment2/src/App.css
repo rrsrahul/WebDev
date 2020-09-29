@@ -1,3 +1,25 @@
 .App {
   text-align: center;
+  display:grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  
+}
+input
+{
+ 
+  height: 50px;
+}
+.elements
+{
+  display: flex;
+}
+body,html
+{
+  margin: 50px;
+  background-color: rgb(250, 214, 219);
+  
 }

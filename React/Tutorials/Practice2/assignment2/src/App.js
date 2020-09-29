@@ -8,26 +8,42 @@ class App extends Component
 {
   state={
     userInput:"",
-    userInputChars:[]
 
   }
 
   userNameHandler = (event)=>
   {
-    const chars = event.target.value.split();
-    this.setState({userInput:event.target.value,userInputChars:chars});
+    
+    this.setState({userInput:event.target.value});
   }
 
   render()
   {
+    let characters = this.state.userInput.split('');
+    console.log(characters);
     return (
-      <div>
+      <div className='App'>
         <input type="text" onChange = {this.userNameHandler}/>
         <p>
           {this.state.userInput}
+          </p>
           <ValidationComp length={this.state.userInput.length}/>
-          <CharComp data ="2"/>
-        </p>
+        <div className='elements'>
+        { characters.map(char=>
+          {
+              return (
+                <div>
+                   <CharComp  data ={char} />
+                   
+                
+                </div>
+              )
+          })
+        }
+
+        </div>
+         
+      
       </div>
     )
   }
