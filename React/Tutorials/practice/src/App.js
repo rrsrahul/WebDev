@@ -19,16 +19,15 @@ class App extends Component
     ],
     showPersons:false
   }
-  switchNameHandler = (newName)=>
+  deletePersonHandler = (personIndex)=>
   {
-      this.setState({
-        persons:[
-          {name:'Rahul',age:10},
-          {name:'Rrs',age:12},
-          {name:newName,age:22}
-        ]
-      });
-      //Setstate merges the arguement passed with the State, and does not discard other state values
+    //const persons = this.state.persons.slice();
+    //slice without arguments copies the array to another variable 
+    //or ES6 spread operator just copies the array
+    const persons = [...this.state.persons];
+    persons.splice(personIndex,1);
+    this.setState( {persons: persons} );
+
   }
   nameChangedHandler = (event)=>
   {
@@ -55,18 +54,18 @@ class App extends Component
     {
       persons= (
         <div>
-        <Person 
-        name={this.state.persons[0].name} 
-        age={this.state.persons[0].age}/>
-        <Person 
-        name={this.state.persons[1].name} 
-        age={this.state.persons[1].age}
-        changed={this.nameChangedHandler}
-        click ={this.switchNameHandler.bind(this,'Heisenbergs')} />
-        <Person 
-        name={this.state.persons[2].name} 
-        age={this.state.persons[2].age}/>
 
+          {
+            this.state.persons.map((person,index)=>
+              {
+                return (
+                  <Person 
+                  click={()=>{this.deletePersonHandler(index)}}
+                  name = {person.name} 
+                  age ={person.age}/>
+                )
+              })
+          }
       </div>
       );
     }
