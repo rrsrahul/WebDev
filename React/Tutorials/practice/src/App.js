@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium,{StyleRoot} from 'radium';
+
 import Person from './Person/Person';
 //import UserInput from './UserInput/UserInput'
 
@@ -64,10 +64,6 @@ class App extends Component
         border: '1px solid blue',
         padding:'8px',
         cursor:'pointer',
-        ':hover':{
-          backgroundColor:'lightgreen',
-          color:'black'
-        }
 
       }
     let persons = null;
@@ -87,8 +83,8 @@ class App extends Component
     {
       persons= (
         //StyleRoot helps adding media queries with inline styles and React
-        
-        <StyleRoot> 
+
+         
           <div>
           
             {
@@ -106,7 +102,7 @@ class App extends Component
                 })
             }
           </div>
-      </StyleRoot>
+      
       );
 
       style.backgroundColor='red';
@@ -216,4 +212,4 @@ const App = props =>
   );
 }*/
 
-export default Radium(App);
+export default App;
