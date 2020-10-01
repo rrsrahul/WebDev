@@ -9,3 +9,12 @@
     background-color: rgb(240, 232, 232);
     text-align: center;
 }
+
+/*@media (min-width: 500px)
+{
+    .Person
+    {
+        width:450px
+    }
+    
+}*/

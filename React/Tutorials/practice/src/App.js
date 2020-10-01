@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium,{StyleRoot} from 'radium';
 import Person from './Person/Person';
 //import UserInput from './UserInput/UserInput'
 
@@ -86,23 +86,27 @@ class App extends Component
     if(this.state.showPersons)
     {
       persons= (
-        <div>
+        //StyleRoot helps adding media queries with inline styles and React
+        
+        <StyleRoot> 
+          <div>
+          
+            {
+              this.state.persons.map((person,index)=>
+                {
+                  return (
+                    <Person 
+                    click={()=>{this.deletePersonHandler(index)}}
+                    name = {person.name} 
+                    age ={person.age}
+                    key = {person.id}
+                    change = {(event=>{ this.nameChangedHandler(event,person.id) })}/>
 
-          {
-            this.state.persons.map((person,index)=>
-              {
-                return (
-                  <Person 
-                  click={()=>{this.deletePersonHandler(index)}}
-                  name = {person.name} 
-                  age ={person.age}
-                  key = {person.id}
-                  change = {(event=>{ this.nameChangedHandler(event,person.id) })}/>
-
-                )
-              })
-          }
-      </div>
+                  )
+                })
+            }
+          </div>
+      </StyleRoot>
       );
 
       style.backgroundColor='red';
