@@ -1,6 +1,21 @@
 .App {
   text-align: center;
-  background-color:lightcyan;
+  
   
 
+}
+html,body
+{
+  height: 100%;
+  background-color:lightcyan;
+}
+
+.red
+{
+  color:red;
+}
+
+.bold
+{
+  font-weight: bold;
 }
