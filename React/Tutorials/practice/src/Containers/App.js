@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Person from './Person/Person';
+import Person from '../Components/Persons/Person/Person';
 //import UserInput from './UserInput/UserInput'
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import ErrorBoundary from '../Components/ErrorBoundary/ErrorBoundary';
 import './App.css';
 //import UserOutput from './UserOutput/UserOutput';
 
