@@ -6,28 +6,6 @@ import Person from './Person/Person';
 import './App.css';
 //import UserOutput from './UserOutput/UserOutput';
 
-import styled from 'styled-components';
-
-const StyledButton = styled.button`
-        background-color: ${ props => props.alt?'red':'green'};
-        color:white;
-        font:inherit;
-        border: 1px solid blue;
-        padding: 8px;
-        cursor: pointer;
-
-        &:hover
-        {
-          background-color: ${ props => props.alt?'salmon':'lightgreen'};
-          color:black;
-        }
-`;
-
-
-
-
- 
-
 class App extends Component
 {
 
@@ -115,7 +93,7 @@ class App extends Component
       
       );
 
-     /* style.backgroundColor='red';
+      /*style.backgroundColor='red';
       style[':hover']={
         backgroundColor:'salmon',
         color:'black'
@@ -128,10 +106,12 @@ class App extends Component
          <h1>Functional React Programming</h1>
         <p className={classes.join(' ')}>Hi First React App</p>
         
-        <StyledButton alt ={this.state.showPersons} 
-          onClick={this.togglePersonsHandler} > 
-              Switch 
-        </StyledButton>
+        <button onClick={this.togglePersonsHandler} >
+          Switch
+        </button>
+           
+             
+       
         
           {persons}
       </div>
