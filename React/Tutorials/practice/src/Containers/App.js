@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-
-import Person from '../Components/Persons/Person/Person';
-//import UserInput from './UserInput/UserInput'
-import ErrorBoundary from '../Components/ErrorBoundary/ErrorBoundary';
-import './App.css';
-//import UserOutput from './UserOutput/UserOutput';
+import './App.module.css';
+import Persons from '../Components/Persons/Persons';
+import Cockpit from '../Components/Cockpit/Cockpit';
 
 class App extends Component
 {
@@ -39,9 +36,6 @@ class App extends Component
 
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-
-
-
     this.setState({
       persons:persons
     });
@@ -55,65 +49,22 @@ class App extends Component
   {
      
     let persons = null;
-
-    let classes = [];
-
-    if(this.state.persons.length<=2)
-    {
-      classes.push('red');
-    }
-    if(this.state.persons.length<=1)
-    {
-      classes.push('bold');
-    }
-
     if(this.state.showPersons)
     {
       persons= (
-        //StyleRoot helps adding media queries with inline styles and React
-
-         
-          <div>
-          
-            {
-              this.state.persons.map((person,index)=>
-                {
-                  return (
-                    <ErrorBoundary>
-                    <Person 
-                    click={()=>{this.deletePersonHandler(index)}}
-                    name = {person.name} 
-                    age ={person.age}
-                    key = {person.id}
-                    change = {(event=>{ this.nameChangedHandler(event,person.id) })}/>
-                    </ErrorBoundary>
-                  )
-                })
-            }
-          </div>
+       <Persons changed = {this.nameChangedHandler} 
+        clicked={this.deletePersonHandler}
+        persons ={this.state.persons}/>
       
       );
-
-      /*style.backgroundColor='red';
-      style[':hover']={
-        backgroundColor:'salmon',
-        color:'black'
-      }*/
     }
 
     //Dynamically Changing CSS styles
     return (
       <div className="App">
-         <h1>Functional React Programming</h1>
-        <p className={classes.join(' ')}>Hi First React App</p>
-        
-        <button onClick={this.togglePersonsHandler} >
-          Switch
-        </button>
-           
-             
-       
-        
+        <Cockpit showPersons ={this.state.showPersons}
+          persons={this.state.persons} 
+          toggle={this.togglePersonsHandler} />
           {persons}
       </div>
     );
