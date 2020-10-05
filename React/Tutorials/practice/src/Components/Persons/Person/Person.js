@@ -1,6 +1,7 @@
 
 import React,{Component} from 'react';
 
+import Auxillary from '../../../hoc/Auxillary';
 import classes from './Person.module.css';
 
 
@@ -9,13 +10,17 @@ class Person extends Component
     render()
     {
         return(
-            <div className={classes.Person}>
+            <Auxillary>
+                <div className={classes.Person}>
      
-            <p onClick={this.props.click}>
-                Hi my name is {this.props.name} and my age is {this.props.age} 
-            </p>
-            <input type='text' onChange={this.props.change} value={this.props.name}/>
-       </div>
+                    <p onClick={this.props.click}>
+                        Hi my name is {this.props.name} and my age is {this.props.age} 
+                    </p>
+                    <input type='text' onChange={this.props.change} value={this.props.name}/>
+                </div>
+
+            </Auxillary>
+            
         );
     }
 }
