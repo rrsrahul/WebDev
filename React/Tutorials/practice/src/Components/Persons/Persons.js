@@ -5,6 +5,7 @@ const persons = (props )=>
         return (
             props.persons.map((person,index)=>
             {
+              console.log('Persons rendering..');
               return (
                
                 <Person 

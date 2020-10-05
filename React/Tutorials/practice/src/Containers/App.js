@@ -5,6 +5,21 @@ import Cockpit from '../Components/Cockpit/Cockpit';
 
 class App extends Component
 {
+    //LifeCycle Hooks
+    constructor(props)
+    {
+      super(props);
+      console.log('App.js constructor');
+      //Can also intialise state in the constructor
+    }
+
+    //LifeCycle Hooks
+
+    static getDerivedStateFromProps(props,state)
+    {
+      console.log('App.js GetDerivedStateFromprops',props);
+        return state;
+    }
 
   state={
     persons:[
@@ -47,7 +62,7 @@ class App extends Component
   }
   render()
   {
-     
+     console.log('App.js Render')
     let persons = null;
     if(this.state.showPersons)
     {
