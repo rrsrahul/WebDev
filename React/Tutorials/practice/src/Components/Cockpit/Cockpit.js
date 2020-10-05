@@ -7,7 +7,7 @@ const Cockpit = (props)=>
     useEffect(()=>
     {
         console.log('Cockpit.js UseEffect');
-    });
+    },[]);
 
     const assignedClasses =[];
     let btnClass = '';
@@ -15,11 +15,11 @@ const Cockpit = (props)=>
         btnClass = classes.Red;
     }
 
-    if(props.persons.length<=2)
+    if(props.persons<=2)
     {
         assignedClasses.push(classes.red);
     }
-    if(props.persons.length<=1)
+    if(props.persons<=1)
     {
         assignedClasses.push(classes.bold);
 
@@ -39,4 +39,4 @@ const Cockpit = (props)=>
     );
 }
 
-export default Cockpit;
+export default React.memo(Cockpit);

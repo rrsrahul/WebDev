@@ -99,7 +99,7 @@ class App extends Component
     return (
       <div className="App">
         <Cockpit showPersons ={this.state.showPersons}
-          persons={this.state.persons} 
+          persons={this.state.persons.length} 
           toggle={this.togglePersonsHandler} />
           {persons}
       </div>
