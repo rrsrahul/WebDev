@@ -3,7 +3,7 @@ import classes from './Cockpit.module.css';
 
 const Cockpit = (props)=>
 {
-
+    //UseEffect is a combination of ComponentDidMount and ComponentDidUpdate
     useEffect(()=>
     {
         console.log('Cockpit.js UseEffect');

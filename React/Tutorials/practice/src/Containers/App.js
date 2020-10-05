@@ -44,6 +44,11 @@ class App extends Component
     {
       console.log('[App.js] Component DidUpdate')
     }
+
+    componentWillUnmount()
+    {
+      console.log('[App.js] ComponentWillUnmount');
+    }
   
   deletePersonHandler = (personIndex)=>
   {
