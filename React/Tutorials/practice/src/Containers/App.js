@@ -2,14 +2,23 @@ import React, { Component } from 'react';
 import './App.module.css';
 import Persons from '../Components/Persons/Persons';
 import Cockpit from '../Components/Cockpit/Cockpit';
-
+let c=0;
 class App extends Component
 {
     //LifeCycle Hooks
     constructor(props)
     {
       super(props);
-      console.log('App.js constructor');
+      this.state={
+        persons:[
+          { id: '1',name:'Rahul',age:10},
+          {id: '2',name:'Rrs',age:12},
+          {id: '3',name:'Heisen',age:22}
+        ],
+        showPersons:false
+      }
+      c++;
+      console.log('App.js constructor',c);
       //Can also intialise state in the constructor
     }
 
@@ -21,14 +30,12 @@ class App extends Component
         return state;
     }
 
-  state={
-    persons:[
-      { id: '1',name:'Rahul',age:10},
-      {id: '2',name:'Rrs',age:12},
-      {id: '3',name:'Heisen',age:22}
-    ],
-    showPersons:false
-  }
+    componentDidMount()
+    {
+      console.log('App.js ComponentDidMount');
+    }
+
+  
   deletePersonHandler = (personIndex)=>
   {
     //const persons = this.state.persons.slice();
@@ -62,7 +69,7 @@ class App extends Component
   }
   render()
   {
-     console.log('App.js Render')
+     console.log('App.js Render');
     let persons = null;
     if(this.state.showPersons)
     {
