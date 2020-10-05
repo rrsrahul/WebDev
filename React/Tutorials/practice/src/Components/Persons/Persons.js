@@ -1,9 +1,9 @@
-import React,{Component} from 'react';
+import React,{PureComponent} from 'react';
 import Person from './Person/Person';
 
 
-
-class Persons extends Component
+//Pure Components implements shouldComponentUpdate on it's own for all props
+class Persons extends PureComponent
 {
 
  /* static getDerivedStateFromProps(props,state)
@@ -12,7 +12,7 @@ class Persons extends Component
     return state;
   }*/
 
-  shouldComponentUpdate(nextProps,nextState)
+  /*shouldComponentUpdate(nextProps,nextState)
   {
     console.log('[Persons.js] ShouldComponentUpdate');
     if(nextProps.persons!== this.props.persons)
@@ -20,7 +20,7 @@ class Persons extends Component
       return true;
     }
     return false;
-  }
+  }*/
 
   getSnapshotBeforeUpdate(prevProps,prevState)
   {
