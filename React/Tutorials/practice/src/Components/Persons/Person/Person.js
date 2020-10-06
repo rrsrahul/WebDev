@@ -1,7 +1,6 @@
 
 import React,{Component} from 'react';
 
-import Auxillary from '../../../hoc/Auxillary';
 import classes from './Person.module.css';
 
 
@@ -10,7 +9,7 @@ class Person extends Component
     render()
     {
         return(
-            <Auxillary>
+            <React.Fragment>
                 <div className={classes.Person}>
      
                     <p onClick={this.props.click}>
@@ -19,7 +18,7 @@ class Person extends Component
                     <input type='text' onChange={this.props.change} value={this.props.name}/>
                 </div>
 
-            </Auxillary>
+            </React.Fragment>
             
         );
     }
