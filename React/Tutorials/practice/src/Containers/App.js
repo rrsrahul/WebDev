@@ -3,6 +3,19 @@ import './App.module.css';
 import Persons from '../Components/Persons/Persons';
 import Cockpit from '../Components/Cockpit/Cockpit';
 let c=0;
+
+/*
+
+SetState also takes a function, and returns the new state as the return value
+This type of setState is used when the new value of the state depends on the old value of the state
+
+for example setState((prevState,props)=>
+{
+return
+{ //new State }
+}
+
+*/
 class App extends Component
 {
     //LifeCycle Hooks
