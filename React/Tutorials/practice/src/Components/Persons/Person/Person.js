@@ -13,6 +13,8 @@ class Person extends Component
         this.inputElement = React.createRef();
         //CreateRef creates a reference object, we can use this later in the program
     }
+
+    static contextType = AuthContext;
     componentDidMount()
     {
         //this.inputElement.focus;
@@ -24,10 +26,10 @@ class Person extends Component
             <React.Fragment>
                 
                 <div className={classes.Person}>
+                {this.context.authenticated ?
+                <p >Authenticated</p> : 
+                <p>Please Login</p>}
                 
-                <AuthContext.Consumer>
-                    {(context)=>context.authenticated ? <p >Authenticated</p> : <p>Please Login</p>}
-                </AuthContext.Consumer>
                     <p key="i1" onClick={this.props.click}>
                         Hi my name is {this.props.name} and my age is {this.props.age} 
                     </p>
