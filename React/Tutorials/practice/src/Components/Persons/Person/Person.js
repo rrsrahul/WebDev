@@ -2,6 +2,7 @@
 import React,{Component} from 'react';
 import Proptypes from 'prop-types';
 import classes from './Person.module.css';
+import AuthContext from '../../../context/auth-context';
 
 
 class Person extends Component
@@ -21,8 +22,12 @@ class Person extends Component
     {
         return(
             <React.Fragment>
+                
                 <div className={classes.Person}>
-     
+                
+                <AuthContext.Consumer>
+                    {(context)=>context.authenticated ? <p >Authenticated</p> : <p>Please Login</p>}
+                </AuthContext.Consumer>
                     <p key="i1" onClick={this.props.click}>
                         Hi my name is {this.props.name} and my age is {this.props.age} 
                     </p>
@@ -34,7 +39,7 @@ class Person extends Component
                     onChange={this.props.change} 
                     value={this.props.name}/>
                 </div>
-
+               
             </React.Fragment>
             
         );

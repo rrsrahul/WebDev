@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.module.css';
 import Persons from '../Components/Persons/Persons';
 import Cockpit from '../Components/Cockpit/Cockpit';
+import AuthContext from '../context/auth-context';
 let c=0;
 
 /*
@@ -28,12 +29,15 @@ class App extends Component
           {id: '2',name:'Rrs',age:12},
           {id: '3',name:'Heisen',age:22}
         ],
-        showPersons:false
+        showPersons:false,
+        authenticated:false
       }
       c++;
       console.log('App.js constructor',c);
       //Can also intialise state in the constructor
     }
+
+
 
     //LifeCycle Hooks
 
@@ -63,6 +67,11 @@ class App extends Component
       console.log('[App.js] ComponentWillUnmount');
     }
   
+
+    loginHandler = ()=>
+    {
+      this.setState({authenticated:true})
+    }
   deletePersonHandler = (personIndex)=>
   {
     //const persons = this.state.persons.slice();
@@ -103,19 +112,25 @@ class App extends Component
       persons= (
        <Persons changed = {this.nameChangedHandler} 
         clicked={this.deletePersonHandler}
-        persons ={this.state.persons}/>
+        persons ={this.state.persons}
+        isAuthenticated ={this.state.authenticated}/>
       
       );
     }
 
     //Dynamically Changing CSS styles
     return (
+      <AuthContext.Provider 
+      value ={{authenticated:this.state.authenticated,
+      login: this.loginHandler}}>
       <div className="App">
         <Cockpit showPersons ={this.state.showPersons}
           persons={this.state.persons.length} 
-          toggle={this.togglePersonsHandler} />
+          toggle={this.togglePersonsHandler} 
+          login ={this.loginHandler}/>
           {persons}
       </div>
+      </AuthContext.Provider>
     );
 
 

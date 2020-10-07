@@ -1,5 +1,6 @@
 import React,{ useEffect,useRef } from 'react';
 import classes from './Cockpit.module.css';
+import AuthContext from '../../context/auth-context'
 
 const Cockpit = (props)=>
 {
@@ -8,7 +9,7 @@ const Cockpit = (props)=>
     useEffect(()=>
     {
         //AutoMatically Clicks the Button after the component is rendered
-        
+
         toggleBtnref.current.click();
         console.log('Cockpit.js UseEffect');
     },[]);
@@ -37,6 +38,14 @@ const Cockpit = (props)=>
         <button className={btnClass} onClick={props.toggle} ref ={toggleBtnref} >
           Switch
         </button>
+        <br/>
+        <br/>
+        <AuthContext.Consumer>
+            {
+                (context)=><button className={btnClass} onClick={context.login}>Login</button>
+            }
+        </AuthContext.Consumer>
+        
            
              
         </div>
