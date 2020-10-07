@@ -1,6 +1,6 @@
 
 import React,{Component} from 'react';
-
+import Proptypes from 'prop-types';
 import classes from './Person.module.css';
 
 
@@ -42,4 +42,10 @@ const person = (props)=>
     );
 }*/
 
+Person.propTpyes = {
+    click:Proptypes.func,
+    name:Proptypes.string,
+    age:Proptypes.number,
+    change: Proptypes.func
+};
 export default Person;
