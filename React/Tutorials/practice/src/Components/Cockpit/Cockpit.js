@@ -1,11 +1,15 @@
-import React,{ useEffect } from 'react';
+import React,{ useEffect,useRef } from 'react';
 import classes from './Cockpit.module.css';
 
 const Cockpit = (props)=>
 {
+    const toggleBtnref = useRef(null);
     //UseEffect is a combination of ComponentDidMount and ComponentDidUpdate
     useEffect(()=>
     {
+        //AutoMatically Clicks the Button after the component is rendered
+        
+        toggleBtnref.current.click();
         console.log('Cockpit.js UseEffect');
     },[]);
 
@@ -30,7 +34,7 @@ const Cockpit = (props)=>
             <h1>Functional React Programming</h1>
         <p className={assignedClasses.join(' ')}>Hi First React App</p>
         
-        <button className={btnClass} onClick={props.toggle} >
+        <button className={btnClass} onClick={props.toggle} ref ={toggleBtnref} >
           Switch
         </button>
            
