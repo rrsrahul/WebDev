@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 const burgerIngredient = (props)=>
 {
     let ingredient = null;
-
+    
     switch(props.type)
     {
         case('bread-bottom'):
-        ingredient = (<div className="classes.BreadBottom"></div>);
+        ingredient = (<div className={classes.BreadBottom}></div>);
         break;
         case('bread-top'):
         ingredient = (
@@ -20,18 +20,20 @@ const burgerIngredient = (props)=>
         );
         break;
         case('meat'):
+        
         ingredient = (
-            <div className={classes.meat}></div>
-        )
+            <div className={classes.Meat}> 
+            </div>
+        );
         break;
         case('cheese'):
         ingredient = (
-            <div className={classes.cheese}></div>
+            <div className={classes.Cheese}></div>
         )
         break;
         case('salad'):
         ingredient = (
-            <div className={classes.salad}></div>
+            <div className={classes.Salad}></div>
         )
         break;
         default:
@@ -41,7 +43,7 @@ const burgerIngredient = (props)=>
         
     }
 
-
+ 
     return (ingredient)
 }
 
