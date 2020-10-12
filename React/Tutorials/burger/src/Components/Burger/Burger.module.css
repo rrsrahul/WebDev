@@ -3,8 +3,9 @@
     width: 100%;
     margin:auto;
     height: 250px;
-    overflow: scroll;
     text-align: center;
+    overflow-x:hidden;
+    overflow-y: scroll;
     font-weight: bold;
     font-size: 1.2rem;
 }
