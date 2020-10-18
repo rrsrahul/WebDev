@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+
+}
+html,body
+{
+  height: 100%;
+  background-color:lightcyan;
+}
+
+.red
+{
+  color:red;
+}
+
+.bold
+{
+  font-weight: bold;
+}
