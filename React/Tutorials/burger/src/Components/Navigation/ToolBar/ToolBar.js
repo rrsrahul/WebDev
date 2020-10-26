@@ -6,7 +6,7 @@ const toolbar= (props)=>
 {
     return (
         <header className={classes.ToolBar}>
-            <div>MENU</div>
+            <div onClick={props.clicked}>MENU</div>
             <Logo height="80%"/>
             <nav className={classes.DesktopOnly
             }>
