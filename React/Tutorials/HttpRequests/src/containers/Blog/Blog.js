@@ -34,7 +34,7 @@ class Blog extends Component {
             //console.log(response);
         }).catch(err =>
             {
-                console.log(err);
+                
                 this.setState({error:true});
 
             })
