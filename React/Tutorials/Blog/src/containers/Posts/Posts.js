@@ -2,14 +2,15 @@ import React,{Component} from 'react';
 import axios from '../../axios';
 import Post from '../../components/Post/Post';
 import './Posts.css'
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 
 class Posts extends Component
 {
 
     state={
-        posts:[]
+        posts:[],
+        selectedPostid:null
 
     }
 
@@ -33,6 +34,7 @@ class Posts extends Component
             //console.log(response);
         }).catch(err =>
             {
+    
                 
                 //this.setState({error:true});
                 console.log(err);
@@ -41,9 +43,10 @@ class Posts extends Component
 
     }
 
-    postSelectedHandler = (id)=>
+    postSelectedHandler = ( id )=>
     {
-            this.setState({selectedPostid: id})
+            //this.setState({selectedPostid: id})
+            this.props.history.push('/'+id);
     }
 
     render()
@@ -54,12 +57,13 @@ class Posts extends Component
         posts = this.state.posts.map( post =>
             {
                 return (
-                <Link to={'/'+post.id} key={post.id}>
+                //<Link to={'/'+post.id} key={post.id}>
                     <Post 
+                    key={post.id}
                     title ={post.title} 
                     Author={post.Author}
                     clicked = {()=>{this.postSelectedHandler(post.id)}} />
-                    </Link>
+                    //</Link>
                 )
             })
     
