@@ -22,7 +22,10 @@ class NewPost extends Component {
         axios.post('/posts/',post).then(response=>
         {
             console.log(response.data);
-            this.setState({submitted:true});
+            this.props.history.push('/posts');
+            //Couple of ways to redirect. using push , enters a new element on the stack 
+            //Using conditional redirect replaces the current page with another page
+            //this.setState({submitted:true});
         })
     }
 
