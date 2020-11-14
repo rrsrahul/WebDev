@@ -25,6 +25,7 @@ class FullPost extends Component {
         console.log(this.props)
        this.loadData();
         
+       
         
     }
 
