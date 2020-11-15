@@ -55,5 +55,6 @@ class Blog extends Component {
     }
 }
 //Switch is used to select only the first match in the Route list 
+//Comditional 
 
 export default Blog;
