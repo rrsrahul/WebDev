@@ -4,6 +4,9 @@ import BurgerBuilder from './Containers/BurgerBuilder/BurgerBuilder';
 import Checkout from './Containers/Checkout/Checkout';
 import './App.css';
 
+import {Route,Switch} from 'react-router-dom';
+
+
 class App extends Component
 {
   render()
@@ -11,8 +14,13 @@ class App extends Component
     return (
       
       <div className="App">
-          <Layout><BurgerBuilder/></Layout>
-          <Checkout/>
+          <Layout>
+            <Switch>
+            <Route path='/checkout' component={Checkout}/>
+            <Route path='/' exact component={ BurgerBuilder }/>
+            </Switch>
+          </Layout>
+          
       </div>
     );
   }
