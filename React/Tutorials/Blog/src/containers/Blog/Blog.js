@@ -13,6 +13,8 @@ const AsyncNewPost = asyncComponent(()=>
     return import('../NewPost/NewPost')
 });
 
+// we can also use const AsyncNewPost = React.lazy(()=> import('../'))
+//Also import Suspense from react
 
 
 
