@@ -7,6 +7,7 @@ import OrderSummary from '../../Components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders';
 import Spinner from '../../Components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import string from '../../Endpoints';
 
 
 
@@ -31,8 +32,9 @@ class BurgerBuilder extends Component
 
     
     componentDidMount()
+
     {
-        axios.get('https://burgerbuilder-868f1.firebaseio.com/Ingredients.json')
+        axios.get(string+'Ingredients.json')
         .then(response =>
         {
             this.setState({ingredients:response.data})
@@ -105,7 +107,7 @@ class BurgerBuilder extends Component
 
     purchaseContinueHandler = ()=>
     {
-        //alert('You can Continue');
+        /*alert('You can Continue');
         this.setState({loading:true});
         const order = {
             ingredients: this.state.ingredients,
@@ -129,7 +131,8 @@ class BurgerBuilder extends Component
             {
                 console.log(err);
                 this.setState({loading:false,purchasing:false});
-            })
+            })*/
+            this.props.history.push('/checkout');
     }
 
     render()
