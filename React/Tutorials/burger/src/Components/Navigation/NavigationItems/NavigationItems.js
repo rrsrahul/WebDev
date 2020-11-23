@@ -7,11 +7,11 @@ const navigationItems = (props)=>
 {
     return (
         <ul className={classes.NavigationItems}>
-           <NavigationItem link="/" active>
+           <NavigationItem link="/" >
                BurgerBuilder
            </NavigationItem>
-           <NavigationItem link="/">
-               Checkout
+           <NavigationItem link="/orders">
+               Orders
            </NavigationItem>
         </ul>
     )
