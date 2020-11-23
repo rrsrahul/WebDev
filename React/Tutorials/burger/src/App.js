@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Layout from './Containers/Layout/Layout'
 import BurgerBuilder from './Containers/BurgerBuilder/BurgerBuilder';
+import Orders from './Containers/Orders/Orders';
 import Checkout from './Containers/Checkout/Checkout';
 import './App.css';
 
@@ -17,6 +18,7 @@ class App extends Component
           <Layout>
             <Switch>
             <Route path='/checkout' component={Checkout}/>
+            <Route path='/orders' component={Orders}/>
             <Route path='/' exact component={ BurgerBuilder }/>
             </Switch>
           </Layout>
