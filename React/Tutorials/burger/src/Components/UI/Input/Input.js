@@ -1,6 +1,8 @@
 import React from 'react'
 import classes from './Input.module.css'
 
+
+//Different Types of Input setting up using switch case for the custom Input component
 const input = (props)=>
 {
     let inputElement = null;
