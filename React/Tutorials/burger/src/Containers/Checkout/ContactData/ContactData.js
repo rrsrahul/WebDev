@@ -9,11 +9,59 @@ class ContactData extends Component
 {
 
     state={
-        name:'',
-        email:'',
-        address:{
-            street:'',
-            postalCode: ''
+        orderForm:{
+                name:{
+                    elementType:'input',
+                    elementConfig:{
+                        type:'text',
+                        placeholder:'Your Name'
+                    },
+                    value:'Rahul'
+                },
+
+                adress:{
+                    elementType:'input',
+                    elementConfig:{
+                        type:'text',
+                        placeholder:'Street'
+                    },
+                    value:'Bangalore'
+                },
+                email:{
+                    elementType:'input',
+                    elementConfig:{
+                        type:'email',
+                        placeholder:'Your email'
+                    },
+                    value:''
+                },
+                zipcode:{
+                    elementType:'input',
+                    elementConfig:{
+                        type:'text',
+                        placeholder:'ZipCode'
+                    },
+                    value:''
+                },
+                country:{
+                    elementType:'input',
+                    elementConfig:{
+                        type:'text',
+                        placeholder:'Country'
+                    },
+                    value:''
+                },
+                deliveryMethod:{
+                    elementType:'select',
+                    elementConfig:{
+                        options:[
+                            {value:'fastest',displayValue:'Fastest'},
+                            {value:'cheapest',displayValue:'Cheapest'}
+                        ]
+                    },
+                    value:'Rahul'
+                }
+
         },
         loading:false
     }
@@ -51,7 +99,7 @@ class ContactData extends Component
     render()
     {
         let form =(<form>
-                <Input inputtype="input" type="text" name="name" placeholder="Your Name"/>
+                <Input elementType='...' elementConfig='...' value='...'/>
             <Input   inputtype="input"  type="email" name="email" placeholder="Your Email"/>
             <Input   inputtype="input" type="text" name="street" placeholder="Your Street"/>
             <Input  inputtype="input" type="text" name="postalCode" placeholder="Your Postal Code"/>
