@@ -4,7 +4,7 @@ import Button from '../../../Components/UI/Button/Button';
 import Spinner from '../../../Components/UI/Spinner/Spinner';
 import classes from './ContactData.module.css'
 import Input from '../../../Components/UI/Input/Input';
-import input from '../../../Components/UI/Input/Input';
+
 
 class ContactData extends Component
 {
@@ -20,7 +20,7 @@ class ContactData extends Component
                     value:''
                 },
 
-                adress:{
+                address:{
                     elementType:'input',
                     elementConfig:{
                         type:'text',
@@ -60,26 +60,29 @@ class ContactData extends Component
                             {value:'cheapest',displayValue:'Cheapest'}
                         ]
                     },
-                    value:''
+                    value:'Fastest'
                 }
 
         },
         loading:false
     }
 
+
+    //Handling Orders
     orderHandler = (event)=>
     {
         event.preventDefault();
+        const formData ={};
+
+        for(let formElement in this.state.orderForm)
+        {
+            formData[formElement] = this.state.orderForm[formElement].value;
+        }
         this.setState({loading:true});
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.price,
-            customer:{
-                name:'Rahul',
-                adress:'Bangalore',
-                email:'rahulrsgoku'
-            },
-            delivery:'fastest'
+            orderData: formData
         }
 
 
@@ -101,7 +104,7 @@ class ContactData extends Component
     //OnChange Listener
     inputChangedHandler = (event,inputIdentifier)=>
     {
-        //console.log(event.target.value)
+        console.log(event.target.value)
         const updatedOrderForm = {
             ...this.state.orderForm
         }
@@ -129,7 +132,7 @@ class ContactData extends Component
 
         }
 
-        let form =(<form>
+        let form =(<form onSubmit={this.orderHandler}>
                 
                 {formElementsArray.map(formElement =>
                     {
@@ -139,7 +142,7 @@ class ContactData extends Component
                             elementType={formElement.config.elementType} 
                             elementConfig={formElement.config.elementConfig} 
                             value={formElement.config.value}
-                            changed={ ()=> { this.inputChangedHandler(event,formElement.id) } }/>
+                            changed={ (event)=> { this.inputChangedHandler(event,formElement.id) } }/>
 
                         )
                     })}
