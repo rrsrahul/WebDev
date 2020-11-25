@@ -4,6 +4,7 @@ import Button from '../../../Components/UI/Button/Button';
 import Spinner from '../../../Components/UI/Spinner/Spinner';
 import classes from './ContactData.module.css'
 import Input from '../../../Components/UI/Input/Input';
+import input from '../../../Components/UI/Input/Input';
 
 class ContactData extends Component
 {
@@ -96,6 +97,25 @@ class ContactData extends Component
             })
         //console.log(this.props.ingredients)
     }
+
+    //OnChange Listener
+    inputChangedHandler = (event,inputIdentifier)=>
+    {
+        //console.log(event.target.value)
+        const updatedOrderForm = {
+            ...this.state.orderForm
+        }
+        //Deep Cloning the Objects inside updatedOrderForm
+        const updatedFormElement = { ...updatedOrderForm[inputIdentifier] }
+        updatedFormElement.value = event.target.value;
+
+        updatedOrderForm[inputIdentifier] = updatedFormElement;
+
+        this.setState({orderForm:updatedOrderForm})
+    }
+
+
+
     render()
     {
         const formElementsArray = [];
@@ -118,7 +138,8 @@ class ContactData extends Component
                             key={formElement.id} 
                             elementType={formElement.config.elementType} 
                             elementConfig={formElement.config.elementConfig} 
-                            value={formElement.config.value}/>
+                            value={formElement.config.value}
+                            changed={ ()=> { this.inputChangedHandler(event,formElement.id) } }/>
 
                         )
                     })}
