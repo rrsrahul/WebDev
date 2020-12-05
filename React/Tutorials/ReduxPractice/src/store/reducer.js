@@ -31,7 +31,7 @@ const reducer = (state=initialState,action)=>
             counter:state.counter-5
         }
     }
-
+    //Adding dispatchers to reducer
     return state;
 }
 
