@@ -4,32 +4,28 @@ const initialState = {
 
 const reducer = (state=initialState,action)=>
 {
-    if(action.type==='INCREMENT')
-    {
-        return {
-            ...state,
-            counter:state.counter+1
-        }
-    }
 
-    if(action.type==='DECREMENT')
+    switch(action.type)
     {
-        return {
-            counter:state.counter-1
-        }
-    }
-
-    if(action.type==='ADD')
-    {
-        return   {
-            counter:state.counter+action.value
-        }
-    }
-    if(action.type==='SUB')
-    {
-        return   {
-            counter:state.counter-action.value
-        }
+        case 'INCREMENT':
+            return {
+                ...state,
+                counter:state.counter+1
+            }
+        case 'DECREMENT':
+            return {
+                counter:state.counter-1
+            }
+        case 'ADD':
+            return   {
+                counter:state.counter+action.value
+            }
+        case 'SUB':
+            return   {
+                counter:state.counter-action.value
+            }
+        default:
+            console.log('default case')
     }
     //Adding dispatchers to reducer
     return state;
