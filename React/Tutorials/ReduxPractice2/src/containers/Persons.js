@@ -6,17 +6,7 @@ import AddPerson from '../components/AddPerson/AddPerson';
 import {connect} from 'react-redux';
 
 class Persons extends Component {
-    state = {
-        persons: []
-    }
-
-
-    personDeletedHandler = (personId) => {
-        this.setState( ( prevState ) => {
-            return { persons: prevState.persons.filter(person => person.id !== personId)}
-        } );
-    }
-
+   
     render () {
         console.log(this.props.people)
         return (
