@@ -54,6 +54,7 @@ const mapDispatchToProps = dispatch =>
         personAdded:()=>{ dispatch({type:'ADD'})},
         personRemoved:()=>{dispatch({type:'REM'})}
     }
+    //Comment
 
 }
 
