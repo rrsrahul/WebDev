@@ -34,6 +34,16 @@ const reducer = (state=initialState,action)=>
                 results:state.results.concat({id:new Date(),value:state.counter})
                 //Don't use push because it manipulates the old array, concat returns a new array 
             }
+        case 'DELETE_RESULT':
+            //const newArray = [...state.results]
+            //splice the newArray using the id 
+
+
+            const updatedArray = state.results.filter((result) => result.id!== action.resultElid )
+            return {
+                ...state,
+                results:updatedArray
+            }
         default:
             console.log('default case')
             return state;
