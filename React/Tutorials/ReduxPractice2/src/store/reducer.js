@@ -9,8 +9,8 @@ const reducer = (state = initialState , action)=>
     {
         const newPerson = {
             id: Math.random(), // not really unique but good enough here!
-            name: 'RRS',
-            age: Math.floor( Math.random() * 20 )
+            name: action.name,
+            age: action.age
         }
         return {
             people: state.people.concat(newPerson)

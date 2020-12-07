@@ -33,7 +33,7 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch =>
 {
     return {
-        personAdded:()=>{ dispatch({type:'ADD'})},
+        personAdded:(name,age)=>{ dispatch({type:'ADD',name:name,age:age})},
         personRemoved:(id)=>{dispatch({type:'REM',id:id})}
     }
     //Comment
