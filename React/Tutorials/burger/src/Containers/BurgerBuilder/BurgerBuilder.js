@@ -15,18 +15,12 @@ import * as actionTypes from '../../store/actions'
 
 
 
-const INGREDIENT_PRICES = {
-    salad: 1,
-    cheese: 2,
-    meat: 3,
-    bacon: 2.5
-};
+
 
 
 class BurgerBuilder extends Component
 {
     state = {
-        totalPrice: 4,
         canPurchase: false,
         loading:false,
         purchasing: false,
@@ -65,41 +59,7 @@ class BurgerBuilder extends Component
             this.setState({canPurchase:sum>0});
 
     }
-    addIngredientHandler = (type)=>
-    {
-        const oldCount = this.props.ings[type];
-        const updatedCount = oldCount+1;
-
-        const updatedIngredients = {
-            ...this.props.ings
-        }
-        updatedIngredients[type]= updatedCount;
-        const newPrice = INGREDIENT_PRICES[type] + this.state.totalPrice;
-        this.setState({totalPrice: newPrice,ingredients:updatedIngredients})
-        this.updatePurchaseState(updatedIngredients);
-
-    }
-
-    removeIngredientHandler = (type)=>
-    {
-
-        const oldCount = this.props.ings[type];
-        if(oldCount<=0)
-        {
-            return;
-        }
-        const updatedCount = oldCount-1;
-
-        const updatedIngredients = {
-            ...this.props.ings
-        }
-        updatedIngredients[type]= updatedCount;
-        const newPrice =  this.state.totalPrice - INGREDIENT_PRICES[type] ;
-        this.setState({totalPrice: newPrice,ingredients:updatedIngredients})
-        this.updatePurchaseState(updatedIngredients);
-
-    }
-
+    
     purchaseHandler = ()=>
     {
         this.setState({purchasing: true})
@@ -170,12 +130,13 @@ class BurgerBuilder extends Component
            ingredientRemoved={this.props.onIngredientRemoved}
            canPurchase={this.state.canPurchase}
            disabled={disabledInfo}
-           onOrder = {this.purchaseHandler}/>
+           onOrder = {this.purchaseHandler}
+           price={this.props.price}/>
            </React.Fragment>;
 
            orderSummary = <OrderSummary ingredients={this.props.ings} continue={this.purchaseContinueHandler}
            cancel={this.purchaseCancelHandler}
-           price={this.state.totalPrice}/>;
+           price={this.props.price}/>;
         }
 
 
@@ -213,7 +174,8 @@ const mapDisaptchToProps = (dispatch)=>
 const mapStateToProps = (state)=>
 {
     return {
-        ings:state.ingredients
+        ings:state.ingredients,
+        price:state.totalPrice
     }
 }
 
