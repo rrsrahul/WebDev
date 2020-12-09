@@ -56,7 +56,7 @@ class BurgerBuilder extends Component
                 return sum+el;
             },0)
 
-            this.setState({canPurchase:sum>0});
+            return sum>0;
 
     }
     
@@ -128,7 +128,7 @@ class BurgerBuilder extends Component
            <BuildControls 
            ingredientAdded = {this.props.onIngredientAdded}
            ingredientRemoved={this.props.onIngredientRemoved}
-           canPurchase={this.state.canPurchase}
+           canPurchase={this.updatePurchaseState(this.props.ings)}
            disabled={disabledInfo}
            onOrder = {this.purchaseHandler}
            price={this.props.price}/>
