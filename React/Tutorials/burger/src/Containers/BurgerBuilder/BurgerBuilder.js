@@ -14,14 +14,9 @@ import * as actionTypes from '../../store/actions'
 
 
 
-
-
-
-
 class BurgerBuilder extends Component
 {
     state = {
-        canPurchase: false,
         loading:false,
         purchasing: false,
         error:false
@@ -96,16 +91,9 @@ class BurgerBuilder extends Component
                 console.log(err);
                 this.setState({loading:false,purchasing:false});
             })*/
-            const queryParams=[];
-            for(let i in this.props.ings)
-            {
-                queryParams.push(encodeURIComponent(i)+'='+encodeURIComponent(this.props.ings[i]));
-            }
-            queryParams.push('price='+this.state.totalPrice)
-            const queryString = queryParams.join('&');
+         
             this.props.history.push({
-                pathname:'/checkout',
-                search:'?'+ queryString
+                pathname:'/checkout'
             });
     }
 
