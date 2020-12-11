@@ -11,10 +11,13 @@ export const saveResult = (result)=>
 
 export const storeResult = (res)=>
 {
-    return (dispatch)=>
+    //redux thunk adds gives us both dispatch and getState
+    return (dispatch,getState)=>
     {
+        console.log(getState().ctr.counter);
     setTimeout(()=>
     {
+        
         dispatch(saveResult(res))
     }, 2000)
 }

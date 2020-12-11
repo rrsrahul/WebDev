@@ -25,6 +25,7 @@ class Checkout extends Component{
             
             <CheckoutSummary ingredients={this.props.ings}
             checkoutCancelled={this.checkoutCancelledHandler}
+            
             checkoutSuccess={this.checkoutSuccessHandler}/>
 
             <Route path={this.props.match.path + '/contact-data'} 
