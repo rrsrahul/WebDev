@@ -12,6 +12,8 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 //import string from '../../Endpoints';
 import * as actionTypes from '../../store/actions/actionTypes'
 
+import * as burgerBuilderActions from '../../store/actions/index';
+
 
 
 class BurgerBuilder extends Component
@@ -154,8 +156,8 @@ class BurgerBuilder extends Component
 const mapDisaptchToProps = (dispatch)=>
 {
     return {
-        onIngredientAdded: (name)=>{ dispatch({type:actionTypes.ADD_INGREDIENT,ingredientName:name})},
-        onIngredientRemoved: (name)=>{ dispatch({type:actionTypes.REMOVE_INGREDIENT,ingredientName:name})}
+        onIngredientAdded: (name)=>{ dispatch(burgerBuilderActions.addIngredient(name))},
+        onIngredientRemoved: (name)=>{ dispatch(burgerBuilderActions.removeIngredient(name))}
     }
 }
 
