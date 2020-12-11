@@ -36,11 +36,13 @@ const fetchIngredientsFailed =()=>
 
 export const initIngredients = ()=>
 {
+    console.log('INIT INGREDIENTS')
     return dispatch => 
     {
         axios.get(string+'Ingredients.json')
         .then(response =>
         {
+            console.log('got ingredients')
             dispatch(setIngredients(response.data))
         })
         .catch(err=>
