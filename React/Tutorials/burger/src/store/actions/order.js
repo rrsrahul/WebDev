@@ -7,7 +7,7 @@ export const purchaseBurgerSuccess = (id,orderData)=>
 {
     return{
         type:actionTypes.PURCHASE_BURGER_SUCCESS,
-        id:id,
+        orderId:id,
         orderData:orderData
     }
 }
@@ -20,17 +20,27 @@ export const purchaseBurgerFailed = (err)=>
     }
 }
 
+export const purchaseBurgerStart = ()=>
+{
+    return {
+        type:actionTypes.PURCHASE_BURGER_START
+    }
+}
+
 
 //Async
-export const  purchaseBurgerStart = (orderData)=>
+export const  purchaseBurger = (orderData,route)=>
 {
     return dispatch =>
     {
+        dispatch(purchaseBurgerStart());
+
         axios.post('/orders.json',orderData)
         .then(response=>
             {
                 console.log(response.data);
-                dispatch(purchaseBurgerSuccess(response.data,orderData))
+                dispatch(purchaseBurgerSuccess(response.data.name,orderData))
+                route.push('/');
                 
             })
         .catch(err=>
@@ -39,3 +49,4 @@ export const  purchaseBurgerStart = (orderData)=>
             })
     }
 }
+

@@ -6,7 +6,7 @@ import Button from '../../../Components/UI/Button/Button';
 import Spinner from '../../../Components/UI/Spinner/Spinner';
 import classes from './ContactData.module.css'
 import Input from '../../../Components/UI/Input/Input';
-import withErrorHandler from '../../../hoc/withErrorHandler';
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 
 import * as orderActions from '../../../store/actions/index'
 
@@ -111,6 +111,7 @@ class ContactData extends Component
     //Handling Orders
     orderHandler = (event)=>
     {
+        console.log('BurgerOrdered')
         event.preventDefault();
         const formData ={};
 
@@ -118,13 +119,13 @@ class ContactData extends Component
         {
             formData[formElement] = this.state.orderForm[formElement].value;
         }
-        
+
         const order = {
             ingredients: this.props.ings,
             price: this.props.price,
             orderData: formData
         }
-        this.props.onOrderBurger(order)
+        this.props.onOrderBurger(order,this.props.history)
         //console.log(this.props.ingredients)
     }
 
@@ -215,7 +216,7 @@ class ContactData extends Component
                 disabled={!this.state.formIsValid} 
                 clicked={this.orderHandler}>    Order   </Button>
         </form> );
-        if(this.state.loading)
+        if(this.props.loading)
         {
             form = <Spinner/>
         }
@@ -232,15 +233,16 @@ class ContactData extends Component
 const mapStateToProps = (state)=>
 {
     return {
-        ings:state.ingredients,
-        price:state.price
+        ings:state.burgerBuilder.ingredients,
+        price:state.burgerBuilder.price,
+        loading:state.order.loading
     }
 }
 
 const mapDisaptchToProps = dispatch =>
 {
     return {
-        onOrderBurger: (orderData)=>{orderActions.purchaseBurgerStart(orderData)}
+        onOrderBurger: (orderData,route)=>{dispatch(orderActions.purchaseBurger(orderData,route))}
     }
 }
 
