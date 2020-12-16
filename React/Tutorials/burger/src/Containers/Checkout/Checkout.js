@@ -5,6 +5,7 @@ import {Redirect} from 'react-router-dom';
 import CheckoutSummary from '../../Components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
 
+
 class Checkout extends Component{
 
 
@@ -18,14 +19,20 @@ class Checkout extends Component{
         this.props.history.replace('/checkout/contact-data');
     }
 
-
+    
     render()
     {
         let summary = <Redirect to ='/'/>
+        
+        console.log(this.props.purchased);
+        
         if(this.props.ings)
         {
+           const purchaseRedirect = this.props.purchased ? <Redirect to ='/'/>:null
+           console.log(purchaseRedirect,'PurchaseRedirected');
             summary = (<div>
-            
+                {purchaseRedirect}
+                
                 <CheckoutSummary ingredients={this.props.ings}
                 checkoutCancelled={this.checkoutCancelledHandler}
                 
@@ -43,9 +50,11 @@ class Checkout extends Component{
 const mapStateToProps = (state)=>
 {
     return {
-        ings:state.burgerBuilder.ingredients
+        ings:state.burgerBuilder.ingredients,
+        purchased:state.order.purchased
     }
 }
+
 
 
 export default connect(mapStateToProps)(Checkout);

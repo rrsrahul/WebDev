@@ -29,7 +29,7 @@ export const purchaseBurgerStart = ()=>
 
 
 //Async
-export const  purchaseBurger = (orderData,route)=>
+export const  purchaseBurger = (orderData)=>
 {
     return dispatch =>
     {
@@ -40,7 +40,7 @@ export const  purchaseBurger = (orderData,route)=>
             {
                 console.log(response.data);
                 dispatch(purchaseBurgerSuccess(response.data.name,orderData))
-                route.push('/');
+               
                 
             })
         .catch(err=>
@@ -50,3 +50,9 @@ export const  purchaseBurger = (orderData,route)=>
     }
 }
 
+export const purchaseInit = ()=>
+{
+    return {
+        type:actionTypes.PURCHASE_INIT
+    }
+}

@@ -125,7 +125,7 @@ class ContactData extends Component
             price: this.props.price,
             orderData: formData
         }
-        this.props.onOrderBurger(order,this.props.history)
+        this.props.onOrderBurger(order)
         //console.log(this.props.ingredients)
     }
 
@@ -235,15 +235,17 @@ const mapStateToProps = (state)=>
     return {
         ings:state.burgerBuilder.ingredients,
         price:state.burgerBuilder.price,
-        loading:state.order.loading
+        loading:state.order.loading,
+        purchased:state.order.purchased
     }
 }
 
 const mapDisaptchToProps = dispatch =>
 {
     return {
-        onOrderBurger: (orderData,route)=>{dispatch(orderActions.purchaseBurger(orderData,route))}
+        onOrderBurger: (orderData)=>{dispatch(orderActions.purchaseBurger(orderData))}
     }
 }
+
 
 export default connect(mapStateToProps,mapDisaptchToProps)(withErrorHandler(ContactData,axios));
