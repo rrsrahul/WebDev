@@ -20,13 +20,14 @@ export const authSuccess = (data)=>
 export const authFailed = (err)=>
 {
     return{
-        type:actionTypes.AUTH_FAILED
+        type:actionTypes.AUTH_FAILED,
+        err:err
     }
 }
 
 //Redux Thunk to export async code
 
-export const auth = (email,password)=>
+export const auth = (email,password,isSignUp)=>
 {
     return dispatch =>
     {
@@ -36,7 +37,12 @@ export const auth = (email,password)=>
             password:password,
             returnSecureToken:true
         }
-        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+FIREBASE_API_KEY,authData)
+        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+FIREBASE_API_KEY;
+        if(!isSignUp)
+        {
+            url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+FIREBASE_API_KEY;
+        }
+        axios.post(url,authData)
         .then(res=>{
             console.log(res)
             dispatch(authSuccess(res.data));
