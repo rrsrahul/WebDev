@@ -54,3 +54,5 @@ const mapDispatchToProps = (dispatch)=>
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler(Orders,axios))
+
+//Redux order implementation
