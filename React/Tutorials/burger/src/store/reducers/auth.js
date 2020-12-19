@@ -7,6 +7,15 @@ const initialState = {
     loading:false
 }
 
+const authLogout = (state,action)=>
+{
+    return {
+        ...state,
+        token:null,
+        userId:null
+    }
+}
+
 const reducer = (state=initialState,action)=>
 {
 
@@ -31,6 +40,8 @@ const reducer = (state=initialState,action)=>
                 error:action.err,
                 loading:false
             }
+        case actionTypes.AUTH_LOGOUT:
+            return authLogout(state,action);
         default:
             return state;
         
