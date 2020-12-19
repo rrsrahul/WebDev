@@ -12,6 +12,6 @@ export {
 
 
 export{
-    auth
+    auth,logOut
     
 } from './auth'
