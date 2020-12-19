@@ -14,4 +14,4 @@ export {
 export{
     auth
     
-} from './Authentication'
+} from './auth'
