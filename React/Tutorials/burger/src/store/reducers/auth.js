@@ -1,10 +1,12 @@
 import * as actionTypes from '../actions/actionTypes';
 
+
 const initialState = {
     token:null,
     userId:null,
     error:null,
-    loading:false
+    loading:false,
+    authRedirectPath:'/'
 }
 
 const authLogout = (state,action)=>
@@ -13,6 +15,14 @@ const authLogout = (state,action)=>
         ...state,
         token:null,
         userId:null
+    }
+}
+
+const authRedirectPath = (state,action)=>
+{
+    return {
+        ...state,
+        authRedirectPath: action.path
     }
 }
 
@@ -42,6 +52,9 @@ const reducer = (state=initialState,action)=>
             }
         case actionTypes.AUTH_LOGOUT:
             return authLogout(state,action);
+
+        case actionTypes.SET_AUTH_REDIRECT_PATH:
+            return authRedirectPath(state,action);
         default:
             return state;
         
