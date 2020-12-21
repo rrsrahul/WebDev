@@ -5,13 +5,18 @@ import Orders from './Containers/Orders/Orders';
 import Checkout from './Containers/Checkout/Checkout';
 import './App.css';
 import Auth from './Containers/Auth/Auth';
-
+import {connect} from 'react-redux';
 import {Route,Switch} from 'react-router-dom';
 import Logout from './Containers/Auth/Logout/Logout';
+import * as actions from './store/actions/index';
 
 
 class App extends Component
 {
+  componentDidMount()
+  {
+    this.props.onTryAutoSignUp();
+  }
   render()
   {
     return (
@@ -33,4 +38,10 @@ class App extends Component
 }
 
 
-export default App;
+const mapDisaptchToProps = dispatch =>
+{
+  return {
+    onTryAutoSignUp: ()=>{ dispatch(actions.authCheckState())}
+  }
+}
+export default connect(null,mapDisaptchToProps)(App);
