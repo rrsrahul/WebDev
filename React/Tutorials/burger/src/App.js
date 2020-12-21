@@ -6,7 +6,7 @@ import Checkout from './Containers/Checkout/Checkout';
 import './App.css';
 import Auth from './Containers/Auth/Auth';
 import {connect} from 'react-redux';
-import {Route,Switch} from 'react-router-dom';
+import {Route,Switch,withRouter} from 'react-router-dom';
 import Logout from './Containers/Auth/Logout/Logout';
 import * as actions from './store/actions/index';
 
@@ -44,4 +44,4 @@ const mapDisaptchToProps = dispatch =>
     onTryAutoSignUp: ()=>{ dispatch(actions.authCheckState())}
   }
 }
-export default connect(null,mapDisaptchToProps)(App);
+export default withRouter(connect(null,mapDisaptchToProps)(App));
