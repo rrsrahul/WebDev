@@ -63,3 +63,6 @@ const mapDisaptchToProps = dispatch =>
   }
 }
 export default withRouter(connect(mapStateToProps,mapDisaptchToProps)(App));
+
+
+//Refactor using better state management 
