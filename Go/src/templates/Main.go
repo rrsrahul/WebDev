@@ -1,35 +1,16 @@
 package main
 
 import (
-	"fmt"
-	"io"
 	"log"
 	"os"
-	"strings"
+	"text/template"
 )
 
 func main() {
-	name := "RRS"
-	str := fmt.Sprint(`
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Hello World!</title>
-</head>
-<body>
-<h1>` +
-		name +
-		`</h1>
-</body>
-</html>
-	`)
-
-	nf, err := os.Create("index.html")
+	tpl, err := template.ParseFiles("index.html")
 	if err != nil {
-		log.Fatal("error creating file", err)
+		log.Fatalln(err)
 	}
-	defer nf.Close()
 
-	io.Copy(nf, strings.NewReader(str))
+	tpl.ExecuteTemplate(os.Stdout, "index.html", "Rahul")
 }
