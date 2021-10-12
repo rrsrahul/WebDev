@@ -34,4 +34,5 @@ func main() {
 	circ := circle{4}
 	info(sq)
 	info(circ)
+	//fmt.Println(circ.area())
 }

@@ -6,13 +6,16 @@ import (
 	"text/template"
 )
 
-func main() {
-	tpl, err := template.ParseGlob("templates/*")
-	if err != nil {
-		log.Fatalln(err)
-	}
+var tpl *template.Template
 
-	err = tpl.ExecuteTemplate(os.Stdout, "index.gohtml", "Rahul")
+func init() {
+
+	tpl = template.Must(template.ParseGlob("templates/*"))
+
+}
+func main() {
+
+	err := tpl.ExecuteTemplate(os.Stdout, "index.gohtml", "Rahul")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -20,6 +23,7 @@ func main() {
 	err = tpl.ExecuteTemplate(os.Stdout, "exec.gohtml", nil)
 	if err != nil {
 		log.Fatal(err)
+		
 	}
 
 }
