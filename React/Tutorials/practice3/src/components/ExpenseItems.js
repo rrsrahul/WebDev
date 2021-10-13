@@ -1,4 +1,5 @@
 import ExpenseItem from "./ExpenseItem"
+import Card from "./Card"
 
 function ExpenseItems(props) {
 
@@ -8,9 +9,9 @@ function ExpenseItems(props) {
             title={expenseItem.title} />)
     })
 
-    return (<div>
+    return (<Card>
         {expenseItems}
-    </div>)
+    </Card>)
 }
 
 export default ExpenseItems;
