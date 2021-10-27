@@ -7,38 +7,26 @@ function ExpenseItems(props) {
     //initialise State
     //const [expenses,] = useState(props.expenses);
 
-    const [filterExpenses, setFilterExpenses] = useState('');
-    const [filter, setFilter] = useState(false)
+    //const [filterExpenses, setFilterExpenses] = useState('');
+    //const [filter, setFilter] = useState(false)
     const [filteredYear, setfilteredYear] = useState('2020')
 
 
     let expenseItems;
-    if (filter === false) {
-        expenseItems = props.expenses.map((expenseItem, idx) => {
-            console.log(expenseItem.title)
-            return (<ExpenseItem date={expenseItem.date}
-                key={idx}
-                amount={expenseItem.amount}
-                title={expenseItem.title} />)
-        })
-    }
-    else {
-        expenseItems = filterExpenses.map((expenseItem, idx) => {
-            return (<ExpenseItem date={expenseItem.date}
-                key={idx}
-                amount={expenseItem.amount}
-                title={expenseItem.title} />)
-        })
-    }
-
-  
+    expenseItems =props.expenses.filter(expense => {
+        return expense.date.getFullYear().toString() === filteredYear
+    })
+    expenseItems = expenseItems.map((expenseItem, idx) => {
+        return (<ExpenseItem date={expenseItem.date}
+            key={idx}
+            amount={expenseItem.amount}
+            title={expenseItem.title} />)
+    })
+    console.log(expenseItems);
+   
 
     const onFilterHandler = (year) => {
-        let newExpenses = props.expenses.filter(expense => {
-            return expense.date.getFullYear().toString() === year
-        })
-        setFilter(true)
-        setFilterExpenses(newExpenses)
+
         setfilteredYear(year)
 
     }
