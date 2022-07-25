@@ -12,6 +12,7 @@ function App() {
     setUsersList((prevUsersList)=>{
       return [...prevUsersList,{name:userName,age:userAge}]
     })
+    
   }
 
   return (

@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/react": "^12.1.2",
     "jest": "^27.4.4"
   }
 }
